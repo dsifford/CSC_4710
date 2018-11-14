@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql/mysql-server
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    volumes:
+      - ./output:/output
+      - type: bind
+        source: ./init/
+        target: /docker-entrypoint-initdb.d/
+
