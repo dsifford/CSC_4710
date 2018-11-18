@@ -1,0 +1,173 @@
+mysql> SELECT order_date, amount
+    -> FROM customers
+    -> JOIN orders
+    ->     ON customers.customer_id = orders.customer_id 
+    -> WHERE customers.customer_id = 3;
++------------+--------+
+| order_date | amount |
++------------+--------+
+| 2018-06-24 | 419.65 |
+| 2018-05-27 | 989.22 |
+| 2018-10-19 | 912.56 |
++------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT first_name, last_name, order_date, amount 
+    -> FROM customers c
+    -> INNER JOIN orders o
+    -> ON c.customer_id = o.customer_id;
++------------+-------------+------------+--------+
+| first_name | last_name   | order_date | amount |
++------------+-------------+------------+--------+
+| Gardy      | De-Ville    | 2017-12-25 | 315.52 |
+| Julie      | Abbie       | 2018-09-06 | 796.26 |
+| Shawn      | Skully      | 2018-04-26 | 264.42 |
+| Nicol      | Joincey     | 2018-09-17 |  66.13 |
+| Shea       | Garforth    | 2018-09-15 | 289.85 |
+| Julie      | Abbie       | 2018-03-10 | 640.81 |
+| Robenia    | Baudasso    | 2017-11-25 | 377.43 |
+| Robenia    | Baudasso    | 2018-11-02 | 789.73 |
+| Teddi      | Yemm        | 2018-06-24 | 419.65 |
+| Raeann     | Kleimt      | 2018-06-19 | 382.95 |
+| Godiva     | Alcoran     | 2018-03-17 | 646.35 |
+| Robenia    | Baudasso    | 2018-06-20 | 207.65 |
+| Christabel | Rawkesby    | 2018-09-11 |  33.12 |
+| Nicol      | Joincey     | 2018-08-01 | 400.73 |
+| Robenia    | Baudasso    | 2018-10-07 | 612.96 |
+| Robenia    | Baudasso    | 2018-05-05 | 150.37 |
+| Shawn      | Skully      | 2018-04-30 | 198.26 |
+| Shea       | Garforth    | 2017-11-17 | 228.43 |
+| Wilbert    | Gentric     | 2017-12-09 |  64.72 |
+| Teddi      | Yemm        | 2018-05-27 | 989.22 |
+| Alfy       | Saltsberger | 2018-02-04 | 233.35 |
+| Wilbert    | Gentric     | 2018-10-24 | 461.18 |
+| Robenia    | Baudasso    | 2018-10-18 | 595.76 |
+| Shea       | Garforth    | 2018-06-13 | 784.87 |
+| Shawn      | Skully      | 2018-05-05 | 351.38 |
+| Teddi      | Yemm        | 2018-10-19 | 912.56 |
+| Vincents   | Agate       | 2018-09-23 | 514.97 |
+| Northrop   | Staining    | 2018-09-09 | 461.57 |
+| Raeann     | Kleimt      | 2018-07-04 | 284.77 |
+| Christabel | Rawkesby    | 2017-11-27 | 599.87 |
+| Shea       | Garforth    | 2018-03-18 |  60.78 |
+| Harman     | Warfield    | 2018-07-25 | 506.50 |
+| Thorvald   | Pounds      | 2018-10-26 |  68.13 |
+| Shawn      | Skully      | 2018-07-13 | 395.28 |
+| Shea       | Garforth    | 2018-09-25 |  24.82 |
+| Genny      | Banasiak    | 2017-11-30 | 693.91 |
+| Raeann     | Kleimt      | 2017-12-13 | 855.65 |
+| Lenka      | Saben       | 2018-04-28 | 381.02 |
+| Wilbert    | Gentric     | 2017-11-24 | 702.53 |
+| Gardy      | De-Ville    | 2018-06-26 | 750.52 |
++------------+-------------+------------+--------+
+40 rows in set (0.00 sec)
+
+mysql> SELECT first_name, last_name, order_date, amount
+    -> FROM customers c
+    -> LEFT JOIN orders o
+    -> ON c.customer_id = o.customer_id;
++------------+-------------+------------+--------+
+| first_name | last_name   | order_date | amount |
++------------+-------------+------------+--------+
+| Gardy      | De-Ville    | 2017-12-25 | 315.52 |
+| Julie      | Abbie       | 2018-09-06 | 796.26 |
+| Shawn      | Skully      | 2018-04-26 | 264.42 |
+| Nicol      | Joincey     | 2018-09-17 |  66.13 |
+| Shea       | Garforth    | 2018-09-15 | 289.85 |
+| Julie      | Abbie       | 2018-03-10 | 640.81 |
+| Robenia    | Baudasso    | 2017-11-25 | 377.43 |
+| Robenia    | Baudasso    | 2018-11-02 | 789.73 |
+| Teddi      | Yemm        | 2018-06-24 | 419.65 |
+| Raeann     | Kleimt      | 2018-06-19 | 382.95 |
+| Godiva     | Alcoran     | 2018-03-17 | 646.35 |
+| Robenia    | Baudasso    | 2018-06-20 | 207.65 |
+| Christabel | Rawkesby    | 2018-09-11 |  33.12 |
+| Nicol      | Joincey     | 2018-08-01 | 400.73 |
+| Robenia    | Baudasso    | 2018-10-07 | 612.96 |
+| Robenia    | Baudasso    | 2018-05-05 | 150.37 |
+| Shawn      | Skully      | 2018-04-30 | 198.26 |
+| Shea       | Garforth    | 2017-11-17 | 228.43 |
+| Wilbert    | Gentric     | 2017-12-09 |  64.72 |
+| Teddi      | Yemm        | 2018-05-27 | 989.22 |
+| Alfy       | Saltsberger | 2018-02-04 | 233.35 |
+| Wilbert    | Gentric     | 2018-10-24 | 461.18 |
+| Robenia    | Baudasso    | 2018-10-18 | 595.76 |
+| Shea       | Garforth    | 2018-06-13 | 784.87 |
+| Shawn      | Skully      | 2018-05-05 | 351.38 |
+| Teddi      | Yemm        | 2018-10-19 | 912.56 |
+| Vincents   | Agate       | 2018-09-23 | 514.97 |
+| Northrop   | Staining    | 2018-09-09 | 461.57 |
+| Raeann     | Kleimt      | 2018-07-04 | 284.77 |
+| Christabel | Rawkesby    | 2017-11-27 | 599.87 |
+| Shea       | Garforth    | 2018-03-18 |  60.78 |
+| Harman     | Warfield    | 2018-07-25 | 506.50 |
+| Thorvald   | Pounds      | 2018-10-26 |  68.13 |
+| Shawn      | Skully      | 2018-07-13 | 395.28 |
+| Shea       | Garforth    | 2018-09-25 |  24.82 |
+| Genny      | Banasiak    | 2017-11-30 | 693.91 |
+| Raeann     | Kleimt      | 2017-12-13 | 855.65 |
+| Lenka      | Saben       | 2018-04-28 | 381.02 |
+| Wilbert    | Gentric     | 2017-11-24 | 702.53 |
+| Gardy      | De-Ville    | 2018-06-26 | 750.52 |
+| Garrik     | Loraine     | NULL       |   NULL |
+| Kalila     | Steele      | NULL       |   NULL |
++------------+-------------+------------+--------+
+42 rows in set (0.00 sec)
+
+mysql> SELECT first_name, last_name, order_date, amount
+    -> FROM customers c
+    -> RIGHT JOIN orders o
+    -> ON c.customer_id = o.customer_id;
++------------+-------------+------------+--------+
+| first_name | last_name   | order_date | amount |
++------------+-------------+------------+--------+
+| Gardy      | De-Ville    | 2017-12-25 | 315.52 |
+| Julie      | Abbie       | 2018-09-06 | 796.26 |
+| Shawn      | Skully      | 2018-04-26 | 264.42 |
+| Nicol      | Joincey     | 2018-09-17 |  66.13 |
+| Shea       | Garforth    | 2018-09-15 | 289.85 |
+| Julie      | Abbie       | 2018-03-10 | 640.81 |
+| Robenia    | Baudasso    | 2017-11-25 | 377.43 |
+| Robenia    | Baudasso    | 2018-11-02 | 789.73 |
+| Teddi      | Yemm        | 2018-06-24 | 419.65 |
+| Raeann     | Kleimt      | 2018-06-19 | 382.95 |
+| Godiva     | Alcoran     | 2018-03-17 | 646.35 |
+| Robenia    | Baudasso    | 2018-06-20 | 207.65 |
+| Christabel | Rawkesby    | 2018-09-11 |  33.12 |
+| Nicol      | Joincey     | 2018-08-01 | 400.73 |
+| Robenia    | Baudasso    | 2018-10-07 | 612.96 |
+| Robenia    | Baudasso    | 2018-05-05 | 150.37 |
+| Shawn      | Skully      | 2018-04-30 | 198.26 |
+| Shea       | Garforth    | 2017-11-17 | 228.43 |
+| Wilbert    | Gentric     | 2017-12-09 |  64.72 |
+| Teddi      | Yemm        | 2018-05-27 | 989.22 |
+| Alfy       | Saltsberger | 2018-02-04 | 233.35 |
+| Wilbert    | Gentric     | 2018-10-24 | 461.18 |
+| Robenia    | Baudasso    | 2018-10-18 | 595.76 |
+| Shea       | Garforth    | 2018-06-13 | 784.87 |
+| Shawn      | Skully      | 2018-05-05 | 351.38 |
+| Teddi      | Yemm        | 2018-10-19 | 912.56 |
+| Vincents   | Agate       | 2018-09-23 | 514.97 |
+| Northrop   | Staining    | 2018-09-09 | 461.57 |
+| Raeann     | Kleimt      | 2018-07-04 | 284.77 |
+| Christabel | Rawkesby    | 2017-11-27 | 599.87 |
+| Shea       | Garforth    | 2018-03-18 |  60.78 |
+| Harman     | Warfield    | 2018-07-25 | 506.50 |
+| Thorvald   | Pounds      | 2018-10-26 |  68.13 |
+| Shawn      | Skully      | 2018-07-13 | 395.28 |
+| Shea       | Garforth    | 2018-09-25 |  24.82 |
+| Genny      | Banasiak    | 2017-11-30 | 693.91 |
+| Raeann     | Kleimt      | 2017-12-13 | 855.65 |
+| Lenka      | Saben       | 2018-04-28 | 381.02 |
+| Wilbert    | Gentric     | 2017-11-24 | 702.53 |
+| Gardy      | De-Ville    | 2018-06-26 | 750.52 |
++------------+-------------+------------+--------+
+40 rows in set (0.00 sec)
+
+mysql> SELECT first_name, last_name, order_date, amount
+    -> FROM customers c
+    -> FULL JOIN orders o
+    -> ON c.customer_id = o.customer_id;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FULL JOIN orders o
+ON c.customer_id = o.customer_id' at line 3
+mysql> notee
